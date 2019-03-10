@@ -1,28 +1,51 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    
+    <div class="container text-center">
+      <img alt="Vue logo" src="./assets/logo.png">
+      <h1>Hello Shiny, this is Vue</h1>
+
+      <div class="form-group shiny-input-container">
+        <label for="ss">Input</label>
+        <input name="ss" type="text" class="form-control" value="" v-model="ss"/>
+      </div>
+
+      <pre id="xx" class="shiny-text-output"></pre>
+
+      {{ ss }}
+
+      <div id="plot" class="shiny-plot-output" style="width: 700px; height: 400px"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  data(){
+    return {
+      ss: null
+    }
+  },
+  metaInfo: {
+    title: "ShinyVue",
+    script: [
+      { type: 'application/shiny-singletons' },
+      { src: 'shared/json2-min.js' },
+      { src: 'shared/jquery.min.js' },
+      { src: 'shared/shiny.min.js'},
+      { src: 'shared/ionrangeslider/js/ion.rangeSlider.min.js' },
+      { src: 'shared/strftime/strftime-min.js' },
+      { src: 'shinyjs/inject.js' }
+    ],
+    link: [
+      { rel: 'stylesheet', type: 'text/css', href: 'shared/shiny.css' },
+      { rel: 'stylesheet', href: 'shared/ionrangeslider/css/ion.rangeSlider.css' },
+      { rel: 'stylesheet', href: 'shared/ionrangeslider/css/ion.rangeSlider.skinShiny.css' }
+    ]
   }
 }
 </script>
 
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
